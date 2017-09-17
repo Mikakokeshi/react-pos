@@ -35,12 +35,13 @@ class ProductList extends Component {
          var products = this.state.productList.map(function(prod){
          return(
              // ↓ class Product render引用,  ↓ prod:function(prod)
-          <div>
-            <img src={prod.image}/>
+          <div id="menu" className="col-xs-12 col-sm-6 col-md-4 ">
+              <img src={prod.image}/>
             <Product name={prod.name} price={prod.price}
             handleTotal={component.calcTotal}/>
-           <br/><br/>
+
           </div>
+
           );
          });
 
@@ -78,11 +79,15 @@ class Product extends Component {
         render() {
           return (
             <div >
-                <p>{this.props.name}  ${this.props.price}* {this.state.qty} = <strong>${this.state.qty*this.props.price}</strong></p>
-                    <button onClick={this.buy} id="buttonqty">+</button>
-                    <button onClick={this.bawas}  id="buttonqty">－</button>
-              　    <img src={this.props.image}/>
-                    <p></p>
+            <div id="menu">
+
+                <br/>
+                <div>{this.props.image} {this.props.name}  ${this.props.price}* {this.state.qty}
+                     =  <strong>${this.state.qty*this.props.price}</strong></div>
+                    <br/>
+                    <p><button onClick={this.buy} id="buttonqty">+</button>
+                    <button onClick={this.bawas}  id="buttonqty">－</button></p>      　
+              </div>
             </div>
       );
       }
@@ -92,8 +97,9 @@ class Product extends Component {
 class Total extends Component {
      render() {
        return (
-         <div>
-            <h5>Total balance: ${this.props.total} </h5>
+         <div id="header">
+            <h3 id="header-left">Cafe Friend's ☺</h3>
+            <h3 id="header-right">Total ${this.props.total} </h3>
          </div>
      );
    　}
